@@ -9,6 +9,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { FileUploadModule } from 'ng2-file-upload';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimeagoModule } from 'ngx-timeago';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -32,6 +33,7 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
 
 
 
+
 // tslint:disable-next-line: typedef
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -49,11 +51,13 @@ export function tokenGetter() {
       MemberCardComponent,
       MemberDetailComponent,
       MemberEditComponent,
-      PhotoEditorComponent
+      PhotoEditorComponent,
+      
 
    ],
   imports: [
     BrowserModule,
+    TimeagoModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
