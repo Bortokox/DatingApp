@@ -8,16 +8,19 @@ import { UserService } from '../_services/user.service';
 
 @Injectable()
 export class MemberListResolver implements Resolve<User[]> {
+    pageNumber = 1;
+    pageSize = 5;
+
     constructor(private useService: UserService,
         private router: Router, private alertify: AlertifyService) {}
 
     resolve(route: ActivatedRouteSnapshot): Observable<User[]> {
-        return this.useService.getUsers().pipe(
+        return this.useService.getUsers(this.pageNumber, this.pageSize).pipe(
             catchError(error => {
                 this.alertify.error('Problem retrieving data');
                 this.router.navigate(['/home']);
                 return of(null);
             })
-        )
+        );
     }
 }
